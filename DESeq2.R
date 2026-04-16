@@ -3,7 +3,8 @@ library(tidyverse)
 
 
 deseq_ana <- function(matrix, 
-                      sample_info){
+                      sample_info，
+                     logFC_t){
   dds <- DESeqDataSetFromMatrix(
     countData = matrix,      
     colData = sample_info,                
@@ -18,7 +19,7 @@ deseq_ana <- function(matrix,
   res <- data.frame(results(dds), 
                     stringsAsFactors = FALSE, 
                     check.names = FALSE)
-  logFC_t <- 1.5 
+  
   res_na <- res %>%
     filter(!is.na(pvalue)) %>% 
     arrange(desc(log2FoldChange)) %>% 
