@@ -4,7 +4,7 @@ library(tidyverse)
 
 deseq_ana <- function(matrix, 
                       sample_info，
-                     logFC_t){
+                      logFC_t){
   dds <- DESeqDataSetFromMatrix(
     countData = matrix,      
     colData = sample_info,                
